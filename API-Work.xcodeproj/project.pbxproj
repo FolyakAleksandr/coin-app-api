@@ -13,6 +13,8 @@
 		01099FEF2BC7F48300345D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01099FEE2BC7F48300345D2F /* Assets.xcassets */; };
 		01099FF22BC7F48300345D2F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01099FF12BC7F48300345D2F /* Base */; };
 		01099FFE2BC7F55000345D2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01099FFD2BC7F55000345D2F /* NetworkManager.swift */; };
+		01CB12C22BC92D6800549799 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB12C12BC92D6800549799 /* ExtensionViewController.swift */; };
+		01CB12C62BC935F600549799 /* CoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB12C52BC935F600549799 /* CoinsCell.swift */; };
 		01EBB5032BC7FD81004ED652 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 01EBB5022BC7FD81004ED652 /* Alamofire */; };
 		01EBB5082BC805D1004ED652 /* ExhangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EBB5072BC805D1004ED652 /* ExhangeRates.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		01099FF12BC7F48300345D2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01099FF32BC7F48300345D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01099FFD2BC7F55000345D2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		01CB12C12BC92D6800549799 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		01CB12C52BC935F600549799 /* CoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsCell.swift; sourceTree = "<group>"; };
 		01EBB5072BC805D1004ED652 /* ExhangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhangeRates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,10 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				01099FF92BC7F4D000345D2F /* Application */,
+				01CB12C02BC92D4A00549799 /* Extension */,
 				01099FFC2BC7F52500345D2F /* Managers */,
 				01EBB5062BC80550004ED652 /* Models */,
 				01099FFA2BC7F4DF00345D2F /* Sources */,
-				01099FFB2BC7F4F700345D2F /* ViewControllers */,
+				01099FFB2BC7F4F700345D2F /* Views */,
 			);
 			path = "API-Work";
 			sourceTree = "<group>";
@@ -88,12 +93,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		01099FFB2BC7F4F700345D2F /* ViewControllers */ = {
+		01099FFB2BC7F4F700345D2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				01099FE92BC7F48100345D2F /* ViewController.swift */,
+				01CB12C42BC935A400549799 /* ViewControllers */,
+				01CB12C32BC9359100549799 /* Cells */,
 			);
-			path = ViewControllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		01099FFC2BC7F52500345D2F /* Managers */ = {
@@ -102,6 +108,30 @@
 				01099FFD2BC7F55000345D2F /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		01CB12C02BC92D4A00549799 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				01CB12C12BC92D6800549799 /* ExtensionViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		01CB12C32BC9359100549799 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				01CB12C52BC935F600549799 /* CoinsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		01CB12C42BC935A400549799 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01099FE92BC7F48100345D2F /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		01EBB5062BC80550004ED652 /* Models */ = {
@@ -191,6 +221,8 @@
 			files = (
 				01099FFE2BC7F55000345D2F /* NetworkManager.swift in Sources */,
 				01099FEA2BC7F48100345D2F /* ViewController.swift in Sources */,
+				01CB12C22BC92D6800549799 /* ExtensionViewController.swift in Sources */,
+				01CB12C62BC935F600549799 /* CoinsCell.swift in Sources */,
 				01099FE62BC7F48100345D2F /* AppDelegate.swift in Sources */,
 				01099FE82BC7F48100345D2F /* SceneDelegate.swift in Sources */,
 				01EBB5082BC805D1004ED652 /* ExhangeRates.swift in Sources */,
