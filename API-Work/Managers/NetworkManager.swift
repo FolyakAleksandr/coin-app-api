@@ -15,16 +15,17 @@ final class NetworkManager {
     }
     
     let header: HTTPHeaders = [
-        "X-CoinAPI-Key": "F11A11C0-B640-8E0B-3743-78F105481E72",
-        "Accept": "application/json"
+        "X-CoinAPI-Key": "D70F6A5C-38BC-4311-8841-CE404672CC74"
     ]
     
-    func printAssets(completion: @escaping ([ExhangeRates]) -> Void) {
-        AF.request(NetworkManager.Links.coinApiLink + EndPoints.assets, headers: header).responseDecodable(of: [ExhangeRates].self) { response in
-            switch response.result {
-            case .success(let rates): completion(rates)
-            case .failure(let failure): print(failure)
+    func getAssets(completion: @escaping ([ExhangeRates]) -> Void) {
+        AF.request(NetworkManager.Links.coinApiLink + EndPoints.assets, headers: header)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: [ExhangeRates].self) { response in
+                switch response.result {
+                case .success(let rates): completion(rates)
+                case .failure(let failure): print(failure)
+                }
             }
-        }
     }
 }
