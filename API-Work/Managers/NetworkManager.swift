@@ -14,13 +14,13 @@ final class NetworkManager {
         static let assets = "/assets"
     }
     
-    let header: HTTPHeaders = [
+    private let header: HTTPHeaders = [
         "X-CoinAPI-Key": "D70F6A5C-38BC-4311-8841-CE404672CC74"
     ]
     
     func getAssets(completion: @escaping ([ExhangeRates]) -> Void) {
         AF.request(NetworkManager.Links.coinApiLink + EndPoints.assets, headers: header)
-            .validate(statusCode: 200..<300)
+            .validate(statusCode: 200 ..< 400)
             .responseDecodable(of: [ExhangeRates].self) { response in
                 switch response.result {
                 case .success(let rates): completion(rates)

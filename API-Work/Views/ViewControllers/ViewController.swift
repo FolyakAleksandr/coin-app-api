@@ -4,6 +4,10 @@ final class ViewController: UIViewController {
     // MARK: - Private Properties
 
     private let coinsTableView = UITableView()
+    private let refreshControl = UIRefreshControl()
+
+    // MARK: - Private Variables
+
     private var countArray = [ExhangeRates]() {
         didSet {
             coinsTableView.reloadData()
@@ -28,6 +32,7 @@ final class ViewController: UIViewController {
     private func setupUI() {
         layoutCoinsTableView()
         setupCoinsTableView()
+        setupRefreshControl()
     }
 
     private func layoutCoinsTableView() {
@@ -56,6 +61,20 @@ final class ViewController: UIViewController {
                 self.countArray = rate
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+            guard let self = self else { return }
+            self.refreshControl.endRefreshing()
+        }
+    }
+
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        coinsTableView.refreshControl = refreshControl
+    }
+
+    @objc private func refreshData(sender: UIRefreshControl) {
+        sender.beginRefreshing()
+        fetchData()
     }
 }
 
