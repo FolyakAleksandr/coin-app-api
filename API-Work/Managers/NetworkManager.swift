@@ -20,7 +20,7 @@ final class NetworkManager {
     
     func getAssets(completion: @escaping ([ExhangeRates]) -> Void) {
         AF.request(NetworkManager.Links.coinApiLink + EndPoints.assets, headers: header)
-            .validate(statusCode: 200 ..< 400)
+            .validate(statusCode: 200 ..< 300)
             .responseDecodable(of: [ExhangeRates].self) { response in
                 switch response.result {
                 case .success(let rates): completion(rates)

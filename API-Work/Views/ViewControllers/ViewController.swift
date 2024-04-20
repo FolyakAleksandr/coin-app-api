@@ -5,12 +5,15 @@ final class ViewController: UIViewController {
 
     private let coinsTableView = UITableView()
     private let refreshControl = UIRefreshControl()
+    private let activityIndicator = UIActivityIndicatorView()
 
     // MARK: - Private Variables
 
     private var countArray = [ExhangeRates]() {
         didSet {
             coinsTableView.reloadData()
+            refreshControl.endRefreshing()
+            activityIndicator.stopAnimating()
         }
     }
 
@@ -33,6 +36,8 @@ final class ViewController: UIViewController {
         layoutCoinsTableView()
         setupCoinsTableView()
         setupRefreshControl()
+        layoutActivityIndicator()
+        setupActivityIndicator()
     }
 
     private func layoutCoinsTableView() {
@@ -45,6 +50,20 @@ final class ViewController: UIViewController {
         coinsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
     }
 
+    private func layoutActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+
+    private func setupActivityIndicator() {
+        activityIndicator.color = UIColor(named: "colorIndicator")
+        activityIndicator.style = .medium
+        activityIndicator.startAnimating()
+    }
+
     private func setupCoinsTableView() {
         coinsTableView.backgroundColor = UIColor(named: "backgroundMain")
         coinsTableView.showsVerticalScrollIndicator = false
@@ -55,15 +74,11 @@ final class ViewController: UIViewController {
     }
 
     private func fetchData() {
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             NetworkManager.instance.getAssets { [weak self] rate in
                 guard let self = self else { return }
                 self.countArray = rate
             }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-            guard let self = self else { return }
-            self.refreshControl.endRefreshing()
         }
     }
 
